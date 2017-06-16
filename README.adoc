@@ -36,6 +36,9 @@ There are two options for the setrole.sh script, --list <list> and --role <role>
 
 === List Option
 
+[IMPORTANT]
+This option can be dangerous to you ability to reach your appliance, please read this in full.
+
 * The --list option allows you to specify a comma separated list of all the roles you want your appliance to have enabled.  If you do not provide the role in the list it will be DISABLED.  Be very careful doing this as you may disable roles you didn't expect to disable.  This is really designed to be run as part of an automation.  No checking is provided to see if the roles you are requesting are valid roles!! Use this at your own risk.
 +
 ----
@@ -49,3 +52,7 @@ There are two options for the setrole.sh script, --list <list> and --role <role>
 ----
 # ./setrole.sh --role embedded_ansible
 ----
+
+=== Testing and Debugging
+
+If you would like to run this script safely you can use the -d or --dryrun option so that it does not make any changes. 
