@@ -32,10 +32,14 @@ This script will update a ManageIQ/CloudForms appliance with requested roles.
 
 == How To Run
 
-There are two options for the setrole.sh script, --list <list> and --role <role>.  
+Here is the usage for setrole.sh: 
 
 ----
-
+Usage: ./setrole.sh -r|--role <role to enable/disable>
+          -l|--list <comma separated list of ALL roles> (danger, no checking done)
+          -s|--serverid <server id>, default=1
+          -d|--dryrun
+If using --list you must provide all roles that will be enabled, any missing roles in this list will be DISABLED.
 ----
 
 === List Option
