@@ -55,7 +55,7 @@ Using this option incorrectly can be impede you ability to reach your appliance 
 
 === Role Option
 
-* The --role option allows you to specify s single role at a time.  If the role is already enabled it is disabled and vice versa.  The role being requested is checked to make sure its a valid MIQ server role.
+* The --role option allows you to specify a single role at a time.  If the role is already enabled it is disabled and vice versa.  The role being requested is checked to make sure its a valid MIQ server role.
 +
 ----
 # ./setrole.sh --role embedded_ansible
