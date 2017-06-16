@@ -4,6 +4,8 @@
 
 I provide no guarantee that this script will work or if it is safe to run on your appliance.  Use at your own risk.
 
+== Description
+
 This script will update a ManageIQ/CloudForms appliance with requested roles.
 
 == Reqiurements:
