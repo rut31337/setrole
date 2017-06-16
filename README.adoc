@@ -34,6 +34,10 @@ This script will update a ManageIQ/CloudForms appliance with requested roles.
 
 There are two options for the setrole.sh script, --list <list> and --role <role>.  
 
+----
+
+----
+
 === List Option
 
 [IMPORTANT]
@@ -53,6 +57,18 @@ This option can be dangerous to you ability to reach your appliance, please read
 # ./setrole.sh --role embedded_ansible
 ----
 
+=== Server ID
+
+If you need to provide a server ID other than 1 you can specify it with --serverid <x>
+
 === Testing and Debugging
 
-If you would like to run this script safely you can use the -d or --dryrun option so that it does not make any changes. 
+If you would like to run this script safely you can use the -d or --dryrun option so that it does not make any changes.  This works for both the list and role options.
++
+----
+# ./setrole.sh -r notifier -d
+Role notifier is currently disabled, we will enable it.
+{:dry_run=>true, :serverid=>1, :path=>"server/role", :value=>"automate,database_operations,embedded_ansible,ems_inventory,ems_operations,event,git_owner,reporting,scheduler,smartstate,user_interface,web_services,websocket,ems_metrics_coordinator,notifier", :help=>false, :serverid_given=>true, :path_given=>true, :value_given=>true, :dry_run_given=>true}
+Setting [server/role], old value: [automate,database_operations,embedded_ansible,ems_inventory,ems_operations,event,git_owner,reporting,scheduler,smartstate,user_interface,web_services,websocket,ems_metrics_coordinator], new value: [automate,database_operations,embedded_ansible,ems_inventory,ems_operations,event,git_owner,reporting,scheduler,smartstate,user_interface,web_services,websocket,ems_metrics_coordinator,notifier]
+Dry run, no updates have been made
+----
