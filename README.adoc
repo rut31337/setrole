@@ -7,7 +7,7 @@ Reqiurements:
 . You must install the setrole.sh script in your /var/www/miq/vmdb/tools directory.
 
 Here is an example to get things going:
-+
+
 ----
 # vmdb
 # cd tools
