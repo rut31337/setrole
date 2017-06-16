@@ -1,8 +1,12 @@
 = CloudForms Set Role
 
+== Author
+
+Patrick Rutledge <prutledg@redhat.com>
+
 == Disblamer
 
-I provide no guarantee that this script will work or if it is safe to run on your appliance.  Use at your own risk.
+I provide no guarantee that this script will work or if it is safe to run on your appliance.  Use at your own risk.  This not an official Red Hat supported script.
 
 == Description
 
