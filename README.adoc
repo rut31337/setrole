@@ -1,12 +1,20 @@
+= CloudForms Set Role
+
+== Disblamer
+
 I provide no guarantee that this script will work or if it is safe to run on your appliance.  Use at your own risk.
 
 This script will update a ManageIQ/CloudForms appliance with requested roles.
 
-Reqiurements:
+== Reqiurements:
+
+* This script was developed on a CloudForms 4.5 GA appliance
+
 * You must install https://github.com/ManageIQ/manageiq/blob/master/tools/configure_server_settings.rb in your /var/www/miq/vmdb/tools directory and make it executable.
+
 * You must install the setrole.sh script in your /var/www/miq/vmdb/tools directory.
 
-Here is an example to get things going:
+== Here is an example to get things going:
 
 ----
 # vmdb
@@ -16,13 +24,19 @@ Here is an example to get things going:
 # chmod +x setrole.sh configure_server_settings.rb
 ----
 
+== How To Run
+
 There are two options for the setrole.sh script, --list <list> and --role <role>.  
+
+=== List Option
 
 * The --list option allows you to specify a comma separated list of all the roles you want your appliance to have enabled.  If you do not provide the role in the list it will be DISABLED.  Be very careful doing this as you may disable roles you didn't expect to disable.  This is really designed to be run as part of an automation.  No checking is provided to see if the roles you are requesting are valid roles!! Use this at your own risk.
 +
 ----
 # ./setrole.sh --list automate,database_operations,embedded_ansible,ems_inventory,ems_operations,event,git_owner,reporting,scheduler,smartstate,user_interface,web_services,websocket
 ----
+
+=== Role Option
 
 * The --role option allows you to specify s single role at a time.  If the role is already enabled it is disabled and vice versa.  The role being requested is checked to make sure its a valid MIQ server role.
 +
