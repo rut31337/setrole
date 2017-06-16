@@ -64,7 +64,7 @@ If you need to provide a server ID other than 1 you can specify it with --server
 === Testing and Debugging
 
 If you would like to run this script safely you can use the -d or --dryrun option so that it does not make any changes.  This works for both the list and role options.
-+
+
 ----
 # ./setrole.sh -r notifier -d
 Role notifier is currently disabled, we will enable it.
