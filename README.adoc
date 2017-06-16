@@ -45,7 +45,7 @@ If using --list you must provide all roles that will be enabled, any missing rol
 === List Option
 
 [IMPORTANT]
-This option can be dangerous to you ability to reach your appliance, please read this in full.
+Using this option incorrectly can be impede you ability to reach your appliance (such as disabling the UI role), please read this in full.
 
 * The --list option allows you to specify a comma separated list of all the roles you want your appliance to have enabled.  If you do not provide the role in the list it will be DISABLED.  Be very careful doing this as you may disable roles you didn't expect to disable.  This is really designed to be run as part of an automation.  No checking is provided to see if the roles you are requesting are valid roles!! Use this at your own risk.
 +
