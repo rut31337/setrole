@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  pre_tasks:
+    - debug: var=role
+  roles:
+    - role: enable_evm_role

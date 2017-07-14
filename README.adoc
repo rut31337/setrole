@@ -10,7 +10,7 @@ I provide no guarantee that this script will work or if it is safe to run on you
 
 == Description
 
-This script will update a ManageIQ/CloudForms appliance with requested roles.
+This repo contains an Ansible module and command line script that will update a ManageIQ/CloudForms appliance with requested roles.
 
 == Reqiurements:
 
@@ -20,7 +20,25 @@ This script will update a ManageIQ/CloudForms appliance with requested roles.
 
 * You must install the setrole.sh script in your /var/www/miq/vmdb/tools directory.
 
-== Here is an example to get things going:
+
+== How To Use The Ansible Module
+
+The evm_roles directory contains 3 example playbooks that call the predefined Ansible roles to disable, enable, and list EVM roles.  The enable and disable EVM roles playbooks expect an extra vars variable called role which should equal a valid EVM role.
+
+* The script will install the configure_server_settings.rb for you in vmdb/tools if its not already there.
+
+disable_role.yml  enable_role.yml  list_roles.yml
+
+You can test the playbook using something like this directly on your CloudForms/ManageIQ appliance:
+
+----
+# cd evm_roles
+# ansible-playbook -vvv enable_role.yml --extra-vars=role=rhn_mirror
+# ansible-playbook -vvv disable_role.yml --extra-vars=role=rhn_mirror
+# ansible-playbook -vvv list_roles.yml
+----
+
+== Here is an example to get things going for the command line script:
 
 ----
 # vmdb
@@ -30,7 +48,7 @@ This script will update a ManageIQ/CloudForms appliance with requested roles.
 # chmod +x setrole.sh configure_server_settings.rb
 ----
 
-== How To Run
+== How To Run Command Line Script
 
 Here is the usage for setrole.sh: 
 

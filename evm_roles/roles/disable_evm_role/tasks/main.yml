@@ -1,0 +1,8 @@
+---
+- name: Disable EVM Role
+  local_action:
+    module: evm_roles
+    role: "{{ role }}"
+    state: absent
+  register: enabled_roles
+- debug: var=enabled_roles

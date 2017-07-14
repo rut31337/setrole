@@ -1,0 +1,8 @@
+---
+- name: Enable EVM Role
+  local_action:
+    module: evm_roles
+    role: "{{ role }}"
+    state: present
+  register: enabled_roles
+- debug: var=enabled_roles

@@ -1,0 +1,7 @@
+---
+- name: Get Enabled EVM Roles
+  local_action:
+    module: evm_roles
+    state: list
+  register: enabled_roles
+- debug: var=enabled_roles
