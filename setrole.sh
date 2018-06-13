@@ -13,15 +13,20 @@ known_roles="automate ems_metrics_coordinator ems_metrics_collector ems_metrics_
 
 usage() {
         echo "Usage: $0 -r|--role <role to enable/disable>"
+        echo "          -s|--serverid <serverid>"
+        echo "          -d|--dry - Dry Run"
         echo "          -l|--list <comma separated list of ALL roles> (danger, no checking done)"
         echo "If using --list you must provide all roles that will be enabled, any missing roles in this list will be DISABLED."
 }
 
-if ! options=$(getopt -o hr:l: -l help,role:,list: -- "$@")
+if ! options=$(getopt -o hds:r:l: -l help,dry,role:,list:,serverid: -- "$@")
 then
         usage
         exit 1
 fi
+
+# Defaut serverid
+serverID=1
 
 set -- $options
 
@@ -30,6 +35,8 @@ do
     case $1 in
     -r|--role) requested_role="$2" ; shift ;;
     -l|--list) requested_list="$2" ; shift ;;
+    -s|--serverid) serverID="$2" ; shift ;;
+    -d|--dry) deb="-d" ; shift ;;
     -h|--help) usage; exit ;;
     (--) shift; break;;
     (*) echo "$0: error - unrecognized option $1" 1>&2; usage; exit 1;;
@@ -46,7 +53,7 @@ fi
 if [ -n "$requested_list" ]
 then
         requested_list=`echo $requested_list|sed "s/'//g"`
-        ./configure_server_settings.rb -s 1 -p server/role -v $requested_list $deb
+        ./configure_server_settings.rb -s $serverID -p server/role -v $requested_list $deb
         exit
 fi
 
@@ -83,7 +90,7 @@ then
 fi
 
 # Get current roles by requesting a dummy role using "dry run"
-current_roles=`./configure_server_settings.rb -s 1 -p server/role -v dummy -d |grep Setting|awk '{print $5}'|sed -e 's/\[\([^]]*\)\],/\1/g'`
+current_roles=`./configure_server_settings.rb -s $serverID -p server/role -v dummy -d |grep Setting|awk '{print $5}'|sed -e 's/\[\([^]]*\)\],/\1/g'`
 
 # See if the requested role is enabled or disabled
 current_list=`echo $current_roles|sed 's/,/ /g'`
@@ -117,4 +124,4 @@ else
 fi
 
 # Append new role in VMDB
-./configure_server_settings.rb -s 1 -p server/role -v $new_roles $deb
+./configure_server_settings.rb -s $serverID -p server/role -v $new_roles $deb
